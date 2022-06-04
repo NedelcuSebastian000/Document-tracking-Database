@@ -1,0 +1,14 @@
+SELECT Document_Name AS 'Name of document',
+       Document_Type_Name AS 'Type of document',
+       Document_Locations.Location_Code AS 'Location code',
+       Location_Name AS 'Location name'
+       FROM Ref_Documents_Type
+       JOIN All_Documents
+       ON Ref_Documents_Type.Document_Type_Code=All_Documents.Document_Type_Code
+       JOIN Document_Locations
+       ON All_Documents.Document_ID=Document_Locations.Location_Code
+       JOIN Ref_Locations
+       ON Document_Locations.Location_Code=Ref_Locations.Location_Code
+       where Document_Locations.Location_code >1
+       Order by Document_Locations.Location_code DESC
+       limit 2;
