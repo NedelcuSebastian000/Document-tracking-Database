@@ -1,0 +1,15 @@
+DROP PROCEDURE IF EXISTS findPerson;
+DELIMITER |
+CREATE PROCEDURE findPerson(IN role_name VARCHAR(45),IN gen VARCHAR(10),OUT counter VARCHAR(20))
+BEGIN
+ SELECT COUNT(Employees.Employee_Name) into name
+ FROM Employees
+ JOIN Roles
+ ON Employees.Role_code=Roles.Role_code
+ WHERE Employees.Gender_MFU=gen AND Roles.Role_Name=role_name;
+ END |
+ DELIMITER ;
+
+
+
+mihailescucelemont224@gmail.com
